@@ -1,0 +1,130 @@
+Name: James Santos
+Professor: Patrick Mckee
+Class: Grad OS
+Date: 12/20/2018
+
+Welcome to the Read Me for the (insert cool name here) Operating System. This
+operating system is in its early stages of development, so there are a few bugs
+that will be discussed inside of the test suite. For now, the purpose of this
+read me is to acclimate the user into using this operating system. Due to the
+system being in its early stages of development, this operating system does not
+guarantee any security of use and the few functions that the operating system is
+capable of.
+
+LOGINING IN
+----------------------------------
+When you boot up the operating system, the first page that will appear is a login
+system where you will be required to enter a username and a password. If you provide
+the wrong pair, you will not be able to login. Due to the operating system not
+providing security, this Read Me will provide the username and password pair.
+
+Username: admin
+Password: pass
+
+Username: invader zim
+Password: zoboomafoo
+
+ACCESSING THE TERMINAL
+-----------------------------------
+Once you have logged in, you will now have access to the terminal. This is where you
+will be able to provide a series of commands to perform set functions. A few functions
+are currently in development, but have been set up to return an error until they are
+completed. To perform a function, write the command inside of the quotation marks as is,
+or else you will be provided with an error message. For now, this is the list of functions 
+that you will be able to perform:
+
+1) "logout" - This is a function that will log you out of your terminal and bring you
+back to the login screen.
+
+2) "exit" - This function will end the program providing you will a little surprise at the end.
+
+3) "clearscreen" - If you find your screen a bit cluttered with mess, you can clear it with this
+function. Be warned though, using this function will clear out any previous scrolling functionality.
+
+4) "adduser" - This function will add a new user to the system which once you log out, you can then
+relog into the system as said user. The function requires two parameters, parameter 1 being the username
+and parameter 2 being the password. You are limited to the size of 20 characters for both username and
+password. To know which characters you are allowed to use, please refer to the keyboard section of the Read Me.
+Example of using this function: "adduser johnny password1". adduser is the command, johnny is
+the username and password1 is the password. You can only add up to three new users at the moment. If you
+attempt to add more users, you will be provided with an error message.
+
+5) "deleteuser" - This function is currently in development and will not work, so it currently provides
+an error message. Once this function is fully developed, it will allow you to remove a user unless there is
+a single user left, then it will provide an error message. This function will take in one parameter which is
+the username of the user you wish to remove from the system.
+
+6) "showuser" - This function is currently in development and will not work, so it currently provides
+an error message. Once this function is fully developed, it will display all of the current users that
+are in the system.
+
+FUTURE DEVELOPMENT
+-----------------------------------
+In the future, this operating system will expand further in its functionality, such as adding in the capability
+to perform simple math equations, play a game like tic tac toe, etc.
+
+DESIGN OF THE OPERATING SYSTEM
+-----------------------------------
+This section will go over the general design choices of the operating system.
+
+1) Visual - The operating system is a simple text based console where a user will be able to see text as the idea
+of this operating system is to mirror the style of MS-DOS. The color is white for easy readability. The width is 80
+columns and the height is 25 rows. In the terminal, " & > " indicates that you are inside the terminal and can start
+performing commands. As you enter commands, the screen will start to scroll. You can scroll up/down to see previous
+typed content. Please refer to keyboard/buffer section to see how to use it. In the login screen, username and password
+is limited to a maximum of 25 characters while inside of the terminal, each line is limited to a maximum of 100 characters.
+
+2) Keyboard - The keyboard is limited on its functionality. At the moment, valid characters that can be typed are:
+Spacebar as whitespace, a-z, and 0-9. The operating system only works in lowercase as capital letters will not be
+recognized. If you type a string, but are not satisfied with the result, you can delete a single character every
+time you press the Backspace key. Once you are satisfied with the string/command, to execute the string/command,
+all you have to do is press Enter. After entering a few commands inside of the terminal, the screen will start to
+scroll. To access previous content written, pressing the Up Arrow key will bring back a single line of content.
+Once you have scrolled up, you can scroll back down with the Down Arrow key. Please refer to the buffer section to
+see how many times you can scroll up/down as well as what happens to previous lines. At a later date, more keys can be
+implemented to have for functionality or more characters to type.
+
+3) Buffer - At the moment there are four global buffers and three internal buffers. The four global buffers are:
+	- "v_username" which is the valid usernames for logging in. You can only have 6 total usernames. Each username
+	  is limited to 20 characters.
+	- "v_password" which is the valid passwords for loggin in. You can only have 6 total passwords. Each password
+	  is limited to 20 characters.
+	- "upbuffer" which is the buffer that stores each line when the terminal scrolls down/when new commands are
+	  implemented. At the moment, it can only store 6 lines, so if you continue to push lines into the upbuffer,
+	  any previous content will be removed. Each line is limited to 85 characters.
+	- "downbuffer" which is the buffer that stores each line when the terminal scrolls up. This buffer allows the user
+	  to scroll down after scrolling up. If you have anything in the downbuffer and a command has been entered, the
+	  downbuffer will empty out. Each line is limited to 85 characters.
+
+The three internal buffers are:
+	- "username" which stores the user's typed username and has a capacity of 50 characters.
+	- "password" which stores the user's typed password and has a capacity of 50 characters.
+	- "command" which stores the user's typed command and has a capacity of 200 characters.
+
+BUGS/TESTING THE SYSTEM
+----------------------------
+Welcome to the bug section of the operating system. Like most programs, bugs are a pain to deal with. At the moment,
+theses are the current bugs that the operating system is currently facing. Luckily, no bugs found breaks the operating
+system. If you happen to find more bugs not documented, please let us know.
+
+1) Testing login - At the moment, nothing is wrong with the login section. You add in the correct user with the right
+password and you are given access to the terminal. Each of the preselected users worked while logging in.
+
+2) Transitioning to the terminal - Nothing wrong here.
+
+3) Entering commands - While entering commands, nothing wrong has been found.
+
+4) Scrolling - Ah... Well... Yeah... So, scrolling has quite a few bugs. For example:
+	- As you are entering commands and reach the point where you terminal is around line 22 (assuming the first line is line 0),
+	  a space will generate between the command and the result. However, once you reach the bottom, everything seems to work OK.
+	- Once you reach the bottom of the terminal with commands, if you scroll up, instead of being able to scroll 6 times, you can
+	  only scroll 5 times. The same goes for scrolling down. The best part, not always! Also, when you just reached the bottom
+	  (after the space) and start scrolling up, the upbuffer/bottombuffer start to get screwy.
+
+5) Commands - Each command works as planned without any bugs being found except that only 19 characters can be used inside of the
+desired 20. This might simply have to do with how the buffer/command works.
+
+6) Keyboard - The keyboard works better than I thought. If you press a key, the desired result will be what you pressed so long as
+the key is valid. Even doing tests like running my finger across the top line (q-p) produces the desired result. Same with holding
+down the key.
+
